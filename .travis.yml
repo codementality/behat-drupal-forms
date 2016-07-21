@@ -38,7 +38,7 @@ install:
 
   # remove Xdebug as we don't need it and it causes
   # PHP Fatal error:  Maximum function nesting level of '256' reached
-  - phpenv config-rm xdebug.ini
+  # - phpenv config-rm xdebug.ini
 
   # install Phantomjs
   - nohup phantomjs --webdriver=8643 > /dev/null 2>&1 &
