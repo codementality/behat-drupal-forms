@@ -2,7 +2,7 @@
 
 ## Travis Status
 
-https://travis-ci.org/codementality/behat-drupal-forms.svg?branch=develop
+[![Build Status](https://travis-ci.org/codementality/behat-drupal-forms.svg?branch=develop)](https://travis-ci.org/codementality/behat-drupal-forms)
 
 ## Configuration
 
