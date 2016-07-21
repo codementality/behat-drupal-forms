@@ -9,5 +9,6 @@
 * Run `vagrant up --provision`
 
 ## Users
-Administrator:  admin / admin
-Authenticated:  testuser / testuser
+
+* Administrator:  admin / admin
+* Authenticated:  testuser / testuser
