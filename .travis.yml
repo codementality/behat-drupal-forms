@@ -62,10 +62,11 @@ before_script:
   - mysql -u root drupal < db/database.sql
   - cp install/files/settings.php www/sites/default/settings.php
   - cp install/files/settings.travis.php www/sites/default/settings.travis.php
+  - cd www
   - drush updb -y
   - drush entup -y #drupal8
   - drush cr -y #drupal 8
-  - cd tests
+  - cd ../tests
   - composer install
   #- php -d sendmail_path=`which true` ~/.composer/vendor/bin/drush.php --yes core-quick-drupal --profile=testing --no-server --db-url=mysql://root:@127.0.0.1/drupal --enable=
 
