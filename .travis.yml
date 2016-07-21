@@ -68,6 +68,7 @@ before_script:
   - sudo cp install/files/mydrupalsite.conf /etc/apache2/sites-available/mydrupalsite.conf
   - sudo a2ensite mydrupalsite.conf
   - sudo sed -i 's~/var/www/sites/drupal~/home/travis/build/codementality/behat-drupal-forms~g' /etc/apache2/sites-available/mydrupalsite.conf
+  - echo "127.0.0.1 mydrupalsite.dev" | sudo tee -a /etc/hosts
   - sudo service apache2 restart
   - composer install
   #- drush updb -y
