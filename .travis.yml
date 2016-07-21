@@ -70,9 +70,10 @@ before_script:
   - sudo sed -i 's~/var/www/sites/drupal~/home/travis/build/codementality/behat-drupal-forms~g' /etc/apache2/sites-available/mydrupalsite.conf
   - echo "127.0.0.1 mydrupalsite.dev" | sudo tee -a /etc/hosts
   - sudo service apache2 restart
+  - cd www
   - composer install
-  #- drush updb -y
-  #- drush entup -y #drupal8
+  - drush updb -y
+  - drush entup -y #drupal8
   - drush cr -y #drupal 8
   - cd ../tests
   - composer install
