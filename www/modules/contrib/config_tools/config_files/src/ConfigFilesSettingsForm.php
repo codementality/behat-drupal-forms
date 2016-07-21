@@ -63,7 +63,7 @@ class ConfigFilesSettingsForm implements ContainerInjectionInterface, FormInterf
   }
 
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    $config = $this->config->get('config_files.config');
+    $config = $this->config->getEditable('config_files.config');
     $config->set('directory', $form_state->getValue('directory'));
     $config->save();
 
