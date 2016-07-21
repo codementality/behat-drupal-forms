@@ -17,7 +17,7 @@ env:
     - PATH="$PATH:$HOME/.composer/vendor/bin"
 
 mysql:
-  database: test
+  database: drupal
   username: root
   encoding: utf8
 
@@ -52,10 +52,11 @@ before_script:
   # navigate out of module directory to prevent blown stack by recursive module lookup
   - cd ../..
   # create new site, stubbing sendmail path with true to prevent delivery errors and manually resolving drush path
-  - mysql -e 'create database travis_ci_drupal_module_example_test'
+  - mysql -e 'create database drupal'
   #- php -d sendmail_path=`which true` ~/.composer/vendor/bin/drush.php --yes core-quick-drupal --profile=testing --no-server --db-url=mysql://root:@127.0.0.1/drupal --enable=
 script:
-  pwd #this is here just to have a command
+  - ls -l
+  - pwd #this is here just to have a command
 
 notifications:
   email: false
