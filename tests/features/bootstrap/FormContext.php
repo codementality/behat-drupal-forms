@@ -58,8 +58,8 @@ class FormContext extends RawDrupalContext implements SnippetAcceptingContext {
     {
         $form_id = $this->forms[$form]['identifier'];
 
-        $session = $this->minkContext->getSession();
-        $regionObj = $session->getPage()->find('region', $region);
+        $regionObj = $this->minkContext->getSession()
+          ->getPage()->find('region', $region);
 
         $selectForms = $regionObj->findAll('css', 'form');
 
@@ -88,8 +88,8 @@ class FormContext extends RawDrupalContext implements SnippetAcceptingContext {
     {
         $form_id = $this->forms[$form]['identifier'];
 
-        $session = $this->minkContext->getSession();
-        $regionObj = $session->getPage()->find('region', $region);
+        $regionObj = $this->minkContext->getSession()
+          ->getPage()->find('region', $region);
 
         $selectForms = $regionObj->findAll('css', 'form');
 
