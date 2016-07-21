@@ -30,7 +30,7 @@ before_install:
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
 
   # install drush globally
-  - composer global require drush/drush:dev-master
+  - composer global require drush/drush:8.*
   # Install Phantomjs prerequisites
   - sudo apt-get install -y build-essential chrpath libssl-dev libxft-dev
   - sudo apt-get install -y libfreetype6 libfreetype6-dev wget
