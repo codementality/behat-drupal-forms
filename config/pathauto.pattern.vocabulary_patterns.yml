@@ -1,0 +1,13 @@
+uuid: 1a062517-229c-4853-8e6e-f240e8c72799
+langcode: en
+status: true
+dependencies:
+    module: [taxonomy]
+id: vocabulary_patterns
+label: 'Vocabulary patterns'
+type: 'canonical_entities:taxonomy_term'
+pattern: '[term:vocabulary]/[term:parents]/[term:name]'
+selection_criteria: {  }
+selection_logic: and
+weight: 0
+relationships: {  }
