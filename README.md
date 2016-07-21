@@ -1,5 +1,9 @@
 #
 
+## Travis Status
+
+https://travis-ci.org/codementality/behat-drupal-forms.svg?branch=develop
+
 ## Configuration
 
 * Add the following to your /etc/hosts file:
