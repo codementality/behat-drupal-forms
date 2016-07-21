@@ -55,11 +55,17 @@ before_script:
   # - cd ../..
   # create new site, stubbing sendmail path with true to prevent delivery errors and manually resolving drush path
   - mysql -e 'create database drupal'
+  - mysql -u root drupal < db/database.sql
+  - cp install/files/settings.php www/sites/default/settings.php
+  - drush updb -y
+  - drush entup -y #drupal8
+  - drush cr -y #drupal 8
+  - cd tests
+  - composer install
   #- php -d sendmail_path=`which true` ~/.composer/vendor/bin/drush.php --yes core-quick-drupal --profile=testing --no-server --db-url=mysql://root:@127.0.0.1/drupal --enable=
 
 script:
-  - ls -l
-  - pwd #this is here just to have a command
+  - bin/behat
 
 notifications:
   email: false
