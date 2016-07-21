@@ -3,7 +3,7 @@ language: php
 sudo: true
 
 php:
-  - 5.5
+  - 5.6
   - hhvm
 
 matrix:
@@ -15,4 +15,25 @@ env:
     # add composer's global bin directory to the path
     # see: https://github.com/drush-ops/drush#install---composer
     - PATH="$PATH:$HOME/.composer/vendor/bin"
+
+mysql:
+  database: $DATABASE
+  username: $DB_USERNAME
+  encoding: $DB_ENCODE
+
+before_install:
+  - export UPDATE TRAVIS_BUILD_DIR
+  - BUILD_TOP=`dirname $TRAVIS_BUILD_DIR`
+  - EXIT_VALUE=0
+  - sudo apt-get update > /dev/null
+  - composer self-update
+  # mail requirements
+  - sudo apt-get update -qq
+
+install:
+  # install php packages required for running a web server from drush on php 5.6
+  - sudo apt-get install -y --force-yes php5-curl php5-mysql php5-mbstring
+
+notifications:
+  email: false
 
