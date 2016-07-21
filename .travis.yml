@@ -38,7 +38,9 @@ before_install:
 
 install:
   # install php packages required for running a web server from drush on php 5.6
+  - sudo apt-get install -y --force-yes apache2
   - sudo apt-get install -y --force-yes php5-curl php5-mysql
+  - sudo a2enmod rewrite
 
   # remove Xdebug as we don't need it and it causes
   # PHP Fatal error:  Maximum function nesting level of '256' reached
@@ -63,7 +65,10 @@ before_script:
   - mysql -u root drupal < db/database.sql
   - cp install/files/settings.php www/sites/default/settings.php
   - cp install/files/settings.travis.php www/sites/default/settings.travis.php
-  - cd www
+  - sudo cp install/files/mydrupalsite.conf /etc/apache2/sites-available/mydrupalsite.conf
+  - sudo a2ensite mydrupalsite.conf
+  - sudo sed -i 's~/var/www/sites/drupal~/home/travis/build/codementality/behat-drupal-forms~g' /etc/apache2/sites-available/mydrupalsite.conf
+  - sudo service apache2 restart
   - composer install
   #- drush updb -y
   #- drush entup -y #drupal8
@@ -73,8 +78,6 @@ before_script:
   #- php -d sendmail_path=`which true` ~/.composer/vendor/bin/drush.php --yes core-quick-drupal --profile=testing --no-server --db-url=mysql://root:@127.0.0.1/drupal --enable=
   - sed -i 's~/var/www/sites/drupal~/home/travis/build/codementality/behat-drupal-forms~g' behat.yml
 script:
-
-
   - bin/behat
 
 notifications:
