@@ -7,3 +7,8 @@
 `192.168.33.10 mydrupalsite.dev`
 
 * Run `vagrant up --provision`
+
+## Users
+
+* Administrator:  admin / admin
+* Authenticated:  testuser / testuser
