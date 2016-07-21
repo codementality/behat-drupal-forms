@@ -1,0 +1,46 @@
+<?php
+
+/**
+ * @file
+ * Contains mydrupalsite.install.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function mydrupalsite_install() {
+  $install = _mydrupalsite_modules();
+  foreach ($install as $module) {
+    \Drupal::service('module_installer')->install([$module]);
+  }
+
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function mydrupalsite_uninstall() {
+  $uninstall = array_reverse(_mydrupalsite_modules());
+  foreach ($uninstall as $module) {
+    \Drupal::service('module_installer')->uninstall([$module]);
+  }
+}
+
+/**
+ * Returns modules to install / uninstall
+ */
+function _mydrupalsite_modules() {
+  // This array must be in the correct order for installing modules, with
+  // dependencies installed first.
+  return array(
+    'ctools', 'token', 'pathauto', 'devel', 'devel_generate', 'webprofiler',
+    'config_files'
+  );
+}
+
+/**
+ * Installs config_files module
+ */
+function mydrupalsite_update_8101() {
+  \Drupal::service('module_installer')->install(['config_files']);
+}

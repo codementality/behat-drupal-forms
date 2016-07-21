@@ -1,0 +1,5 @@
+name: My Drupal Site
+type: module
+description: My Drupal Site installation module
+core: 8.x
+package: MDS

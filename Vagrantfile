@@ -90,6 +90,15 @@ Vagrant.configure(2) do |config|
      then
        echo "Please copy your settings.php file to www/sites/default/settings.php, or create a settings.php file to load your site."
      fi
+     if [ ! -f "/usr/local/bin/drupal" ]
+     then
+       curl https://drupalconsole.com/installer -L -o drupal.phar
+       sudo mv drupal.phar /usr/local/bin/drupal
+       sudo chmod +x /usr/local/bin/drupal
+       drupal init --override
+     fi
+     cd /var/www/sites/drupal
+     #cp install/files/settings.php www/sites/default/settings.php
      cd /var/www/sites/drupal/www
      drush updb
      drush entup #drupal8
