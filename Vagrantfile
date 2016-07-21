@@ -97,11 +97,19 @@ Vagrant.configure(2) do |config|
        sudo chmod +x /usr/local/bin/drupal
        drupal init --override
      fi
+     cd /etc/php5/apache2
+     sudo cp /var/www/sites/drupal/install/files/php.ini php.ini
+     cd /etc/apache2/sites-available
+     sudo cp /var/www/sites/drupal/install/files/mydrupalsite.conf mydrupalsite.conf
+     sudo service apache2 restart
+     sudo apt-get install git -y
+     sudo apt-get install vim -y
      cd /var/www/sites/drupal
      #cp install/files/settings.php www/sites/default/settings.php
      cd /var/www/sites/drupal/www
-     drush updb
-     drush entup #drupal8
+     drush en mydrupalsite -y
+     drush updb -y
+     drush entup -y #drupal8
      # drush fra -y #with features installed
      # drush cc all #drupal 7
      drush cr -y #drupal 8
