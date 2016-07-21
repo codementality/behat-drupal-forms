@@ -26,11 +26,6 @@ before_install:
   - BUILD_TOP=`dirname $TRAVIS_BUILD_DIR`
   - EXIT_VALUE=0
   - sudo apt-get update > /dev/null
-  - composer self-update
-  - export PATH="$HOME/.composer/vendor/bin:$PATH"
-
-  # install drush globally
-  - composer global require drush/drush:8.*
   # Install Phantomjs prerequisites
   - sudo apt-get install -y build-essential chrpath libssl-dev libxft-dev
   - sudo apt-get install -y libfreetype6 libfreetype6-dev wget
@@ -49,11 +44,18 @@ before_script:
   # PHP Fatal error:  Maximum function nesting level of '256' reached
   - phpenv config-rm xdebug.ini
 
+  - composer self-update
+  - export PATH="$HOME/.composer/vendor/bin:$PATH"
+
+  # install drush globally
+  - composer global require drush/drush:8.*
+
   # navigate out of module directory to prevent blown stack by recursive module lookup
   - cd ../..
   # create new site, stubbing sendmail path with true to prevent delivery errors and manually resolving drush path
   - mysql -e 'create database drupal'
   #- php -d sendmail_path=`which true` ~/.composer/vendor/bin/drush.php --yes core-quick-drupal --profile=testing --no-server --db-url=mysql://root:@127.0.0.1/drupal --enable=
+
 script:
   - ls -l
   - pwd #this is here just to have a command
