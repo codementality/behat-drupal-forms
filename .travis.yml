@@ -60,8 +60,8 @@ before_script:
   # create new site, stubbing sendmail path with true to prevent delivery errors and manually resolving drush path
   - mysql -e 'create database drupal'
   - mysql -u root drupal < db/database.sql
-  - mysql -e "grant all on drupal.* to drupal@localhost identified by 'drupal';"
   - cp install/files/settings.php www/sites/default/settings.php
+  - cp install/files/settings.travis.php www/sites/default/settings.travis.php
   - drush updb -y
   - drush entup -y #drupal8
   - drush cr -y #drupal 8
