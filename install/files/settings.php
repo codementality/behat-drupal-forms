@@ -715,9 +715,6 @@ $settings['trusted_host_patterns'] = array(
  *
  * Keep this code block at the end of this file to take full effect.
  */
-if (file_exists(__DIR__ . '/settings.travis.php')) {
-  include __DIR__ . '/settings.travis.php';
-}
 $databases['default']['default'] = array (
   'database' => 'drupal',
   'username' => 'drupal',
@@ -728,5 +725,9 @@ $databases['default']['default'] = array (
   'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
   'driver' => 'mysql',
 );
+if (file_exists(__DIR__ . '/settings.travis.php')) {
+ include __DIR__ . '/settings.travis.php';
+}
+
 $settings['install_profile'] = 'standard';
 $config_directories['sync'] = 'sites/default/files/config_DQbYCf9pS11qvQQRzNxAiRLjD2Hu2M1ETxVGZYOEns-dg1sQ3WcPaFsTRSkTGJ2Le4AiguWnxw/sync';
