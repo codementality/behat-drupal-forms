@@ -48,7 +48,8 @@ install:
   - nohup phantomjs --webdriver=8643 > /dev/null 2>&1 &
 
 before_script:
-
+  - sudo mkdir -p /var/www/sites
+  #- sudo ln -s /home/travis/build/codementality/behat-drupal-forms /var/www/sites/drupal
   - composer self-update
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
 
@@ -70,10 +71,10 @@ before_script:
   - cd ../tests
   - composer install
   #- php -d sendmail_path=`which true` ~/.composer/vendor/bin/drush.php --yes core-quick-drupal --profile=testing --no-server --db-url=mysql://root:@127.0.0.1/drupal --enable=
-
+  - sed -i 's~/var/www/sites/drupal~/home/travis/build/codementality/behat-drupal-forms~g' behat.yml
 script:
-  - pwd
-  - echo Starting behat tests...
+
+
   - bin/behat
 
 notifications:
