@@ -21,6 +21,10 @@ mysql:
   username: root
   encoding: utf8
 
+addons:
+  hosts:
+  - mydrupalsite.dev
+
 before_install:
   - export UPDATE TRAVIS_BUILD_DIR
   - BUILD_TOP=`dirname $TRAVIS_BUILD_DIR`
@@ -56,6 +60,7 @@ before_script:
   # create new site, stubbing sendmail path with true to prevent delivery errors and manually resolving drush path
   - mysql -e 'create database drupal'
   - mysql -u root drupal < db/database.sql
+  - mysql -e "grant all on drupal.* to drupal@localhost identified by 'drupal';"
   - cp install/files/settings.php www/sites/default/settings.php
   - drush updb -y
   - drush entup -y #drupal8
@@ -65,8 +70,9 @@ before_script:
   #- php -d sendmail_path=`which true` ~/.composer/vendor/bin/drush.php --yes core-quick-drupal --profile=testing --no-server --db-url=mysql://root:@127.0.0.1/drupal --enable=
 
 script:
+  - pwd
+  - echo Starting behat tests...
   - bin/behat
 
 notifications:
   email: false
-
