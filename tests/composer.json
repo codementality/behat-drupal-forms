@@ -1,0 +1,42 @@
+{
+  "name": "lhridley/behat-drupal-forms",
+  "type": "behat-extension",
+  "description": "Behat testing for Forms in Drupal",
+  "keywords": [
+    "drupal",
+    "web",
+    "test",
+    "behat"
+  ],
+  "homepage": "http://drupal.org/project/behatdrupalforms",
+  "license": "GPL-2.0+",
+  "authors": [
+    {
+      "name": "Lisa Ridley",
+      "email": "lhridley@gmail.com"
+    }
+  ],
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/codementality/behat-drupal-forms.git"
+    }
+  ],
+  "require": {
+    "drupal/drupal-extension": "3.*",
+    "behat/mink-extension": "*",
+    "behat/behat": "3.*"
+  },
+  "config": {
+    "bin-dir": "bin/"
+  },
+  "require-dev" : {
+  },
+  "autoload": {
+    "psr-4": {
+      "CodeMentality\\Drupal\\": "src/"
+    }
+  },
+  "extra": {
+  }
+}

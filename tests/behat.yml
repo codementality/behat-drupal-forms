@@ -1,0 +1,43 @@
+default:
+  suites:
+    forms:
+      paths:
+        [ %paths.base%/features/forms ]
+      contexts:
+        - FormContext:
+            parameters:
+              forms:
+                'Search Block': '#search-block-form'
+                'Search': '#search-form'
+                'Advanced Search': '#edit-advanced'
+                'Article': '#node-article-form'
+                'Website feedback': '#contact-message-feedback-form'
+                'User Login': '#user-login-form'
+                'User Registration': '#user-register-form'
+                'Password Reset': '#user-pass'
+        - PageContext:
+            parameters:
+              pages:
+                'Contact': '/contact'
+                'Node Search': '/search/node'
+                'User Search': '/search/user'
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\MinkContext
+        - Drupal\DrupalExtension\Context\MessageContext
+        - Drupal\DrupalExtension\Context\DrushContext
+  extensions:
+    Behat\MinkExtension:
+      goutte: ~
+      selenium2: ~
+      base_url: http://mydrupalsite.dev
+    Drupal\DrupalExtension:
+          blackbox: ~
+          api_driver: 'drupal'
+          drush:
+            alias: 'local'
+          drupal:
+            drupal_root: '/var/www/sites/drupal/www'
+          region_map:
+            "footer": "#footer"
+            "content": ".region-content"
+            "left sidebar": ".region-sidebar-first"
