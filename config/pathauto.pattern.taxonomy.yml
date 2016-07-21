@@ -1,10 +1,10 @@
-uuid: 497de564-761e-4194-bc11-e886bfcfde9c
+uuid: aba34d64-ae6c-47dd-a51b-53defbb19af8
 langcode: en
 status: true
 dependencies:
     module: [taxonomy]
 id: taxonomy
-label: Taxonomy
+label: 'Taxonomy Terms'
 type: 'canonical_entities:taxonomy_term'
 pattern: '[term:vocabulary]/[term:parent:parents]/[term:name]'
 selection_criteria: {  }

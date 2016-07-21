@@ -1,4 +1,4 @@
-uuid: 751375ca-c1b3-4589-a4ea-e300fb598fe1
+uuid: 47c18487-af73-4b64-b3cb-a25ddc0be236
 langcode: en
 status: true
 dependencies:
@@ -8,7 +8,7 @@ label: Article
 type: 'canonical_entities:node'
 pattern: 'article/[node:created:html_month]/[node:title]'
 selection_criteria:
-    c1cad9b8-2841-482b-bebc-91a78090f5f5: { id: node_type, bundles: { article: article }, negate: false, context_mapping: { node: node }, uuid: c1cad9b8-2841-482b-bebc-91a78090f5f5 }
+    91256d66-ea41-4b78-8341-f647ec289378: { id: node_type, bundles: { article: article }, negate: false, context_mapping: { node: node }, uuid: 91256d66-ea41-4b78-8341-f647ec289378 }
 selection_logic: and
 weight: -5
 relationships: {  }
