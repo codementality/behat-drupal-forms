@@ -57,10 +57,27 @@ class FormContext extends RawDrupalContext implements SnippetAcceptingContext {
     public function iShouldSeeTheFormInTheRegion($form, $region)
     {
         $form_id = $this->forms[$form]['identifier'];
-        $regionObj = $this->minkContext->getRegion($region);
-        $selectElement = $regionObj->findAll('css', $form_id);
-        if (empty($selectElement)) {
+
+        $session = $this->minkContext->getSession();
+        $regionObj = $session->getPage()->find('region', $region);
+
+        $selectForms = $regionObj->findAll('css', 'form');
+
+        if (empty($selectForms)) {
             throw new \Exception(sprintf("No form '%s' is present in the '%s' region", $form, $region));
+        }
+
+        $found = FALSE;
+        foreach ($selectForms as $element) {
+            $attr = $element->find('css', $form_id);
+
+            if (!empty($attr)) {
+                $found = TRUE;
+                break;
+            }
+        }
+        if (!$found) {
+            throw new \Exception(sprintf("The form '%s' is not present in the '%s' region", $form, $region));
         }
     }
 
@@ -70,9 +87,32 @@ class FormContext extends RawDrupalContext implements SnippetAcceptingContext {
     public function iShouldNotSeeTheFormInTheRegion($form, $region)
     {
         $form_id = $this->forms[$form]['identifier'];
-        $regionObj = $this->minkContext->getRegion($region);
-        $selectElement = $regionObj->findAll('css', $form_id);
-        if (!empty($selectElement)) {
+
+        $session = $this->minkContext->getSession();
+        $regionObj = $session->getPage()->find('region', $region);
+
+        $selectForms = $regionObj->findAll('css', 'form');
+
+        if (empty($selectForms)) {
+            return;
+        }
+        $selectElement = $regionObj->find('css', $form_id);
+        if (empty($selectElement)) {
+            return;
+        }
+        $selectForms = $selectElement->findAll('css', 'form');
+        if (empty($selectForms)) {
+            return;
+        }
+        $found = FALSE;
+        foreach ($selectForms as $element) {
+            $attr = $element->find('css', $form_id);
+            if (!empty($attr)) {
+                $found = TRUE;
+                break;
+            }
+        }
+        if ($found) {
             throw new \Exception(sprintf("The form '%s' is present in the '%s' region", $form, $region));
         }
     }
