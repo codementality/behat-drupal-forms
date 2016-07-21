@@ -1,0 +1,14 @@
+uuid: 656ac9fd-4f89-4304-aff8-514000cbfbb2
+name: 'Drupal Dev testing'
+mail: lhridley@gmail.com
+slogan: ''
+page:
+    403: ''
+    404: ''
+    front: /node
+admin_compact_mode: false
+weight_select_max: 100
+langcode: en
+default_langcode: en
+_core:
+    default_config_hash: yXadRE77Va-G6dxhd2kPYapAvbnSvTF6hO4oXiOEynI

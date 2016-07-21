@@ -1,0 +1,12 @@
+uuid: 79c4c44b-d15e-4bc0-a4e8-b6d0da4775c0
+langcode: en
+status: true
+dependencies: {  }
+_core:
+    default_config_hash: c4zaT5cyPxuTXI6JOWt3qRtMvICT9tHB6d9a5VG-CmQ
+id: feedback
+label: 'Website feedback'
+recipients:
+    - lhridley@gmail.com
+reply: ''
+weight: 0

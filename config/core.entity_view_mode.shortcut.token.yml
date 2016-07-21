@@ -1,0 +1,9 @@
+uuid: cd114cfc-37d5-4746-bead-64a1ece6aeb6
+langcode: en
+status: true
+dependencies:
+    module: [shortcut]
+id: shortcut.token
+label: Token
+targetEntityType: shortcut
+cache: true
