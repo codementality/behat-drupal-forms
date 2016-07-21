@@ -38,7 +38,7 @@ install:
   - sudo apt-get install -y --force-yes php5-curl php5-mysql
   # install drush
   - php -r "readfile('http://files.drush.org/drush.phar');" > drush
-  - php drush core-status
+  - sudo php drush core-status
   - chmod +x drush
   - sudo mv drush /usr/local/bin
   # install Phantomjs
