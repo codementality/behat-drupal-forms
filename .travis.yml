@@ -36,13 +36,14 @@ install:
   # install php packages required for running a web server from drush on php 5.6
   - sudo apt-get install -y --force-yes php5-curl php5-mysql
 
+  # remove Xdebug as we don't need it and it causes
+  # PHP Fatal error:  Maximum function nesting level of '256' reached
+  - phpenv config-rm xdebug.ini
+
   # install Phantomjs
   - nohup phantomjs --webdriver=8643 > /dev/null 2>&1 &
 
 before_script:
-  # remove Xdebug as we don't need it and it causes
-  # PHP Fatal error:  Maximum function nesting level of '256' reached
-  - phpenv config-rm xdebug.ini
 
   - composer self-update
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
@@ -51,7 +52,7 @@ before_script:
   - composer global require drush/drush:8.*
 
   # navigate out of module directory to prevent blown stack by recursive module lookup
-  - cd ../..
+  # - cd ../..
   # create new site, stubbing sendmail path with true to prevent delivery errors and manually resolving drush path
   - mysql -e 'create database drupal'
   #- php -d sendmail_path=`which true` ~/.composer/vendor/bin/drush.php --yes core-quick-drupal --profile=testing --no-server --db-url=mysql://root:@127.0.0.1/drupal --enable=
