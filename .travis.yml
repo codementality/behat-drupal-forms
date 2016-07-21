@@ -63,6 +63,7 @@ before_script:
   - cp install/files/settings.php www/sites/default/settings.php
   - cp install/files/settings.travis.php www/sites/default/settings.travis.php
   - cd www
+  - composer install
   - drush updb -y
   - drush entup -y #drupal8
   - drush cr -y #drupal 8
