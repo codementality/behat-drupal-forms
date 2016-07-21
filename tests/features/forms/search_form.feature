@@ -1,7 +1,7 @@
 Feature: The search forms should be on the appropriate pages
 
   Scenario:  Test for the Search Block form in the sidebar
-    Given I am on the homepage
+    Given I am on the "Front" page
     Then I should see the "Search Block" form in the "left sidebar" region
 
   @api

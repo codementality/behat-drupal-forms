@@ -7,20 +7,55 @@ default:
         - FormContext:
             parameters:
               forms:
-                'Search Block': '#search-block-form'
-                'Search': '#search-form'
-                'Advanced Search': '#edit-advanced'
-                'Article': '#node-article-form'
-                'Website feedback': '#contact-message-feedback-form'
-                'User Login': '#user-login-form'
-                'User Registration': '#user-register-form'
-                'Password Reset': '#user-pass'
+                Search Block:
+                  identifier: '#search-block-form'
+                  form text fields:
+                    search terms: '#edit-keys'
+                  form submit elements:
+                    search button: '#edit-submit'
+                Search:
+                  identifier: '#search-form'
+                  form text fields:
+                    search terms: '#edit-keys'
+                  form submit elements:
+                    search button: '#edit-submit'
+                Advanced Search:
+                  identifier: '#edit-advanced'
+                  sections:
+                    Keywords: '#edit-keywords-fieldset'
+                    Types: '#edit-types-fieldset'
+                    Languages: '#edit-lang-fieldset'
+                  form text fields:
+                    Containing any of the words: '#edit-or'
+                    Containing the phrase: '#edit-phrase'
+                    Containing none of the words: '#edit-negative'
+                  dropdown fields:
+                  checkbox fields:
+                    Article: '#edit-type-article'
+                    Basic page: '#edit-type-page'
+                    English: '#edit-language-en'
+                    Not specified: '#edit-language-und'
+                    Not applicable: '#edit-language-zxx'
+                  radio button fields:
+                  form submit elements:
+                    advanced search button: '#edit-submit--2'
+                Article:
+                  identiier: '#node-article-form'
+                Website feedback:
+                  identifier: '#contact-message-feedback-form'
+                User Login':
+                  identifier: '#user-login-form'
+                User Registration':
+                  identifier: '#user-register-form'
+                Password Reset':
+                  identifier: '#user-pass'
         - PageContext:
             parameters:
               pages:
                 'Contact': '/contact'
                 'Node Search': '/search/node'
                 'User Search': '/search/user'
+                'Front': '/'
         - Drupal\DrupalExtension\Context\DrupalContext
         - Drupal\DrupalExtension\Context\MinkContext
         - Drupal\DrupalExtension\Context\MessageContext

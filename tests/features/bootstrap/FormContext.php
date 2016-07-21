@@ -56,7 +56,7 @@ class FormContext extends RawDrupalContext implements SnippetAcceptingContext {
      */
     public function iShouldSeeTheFormInTheRegion($form, $region)
     {
-        $form_id = $this->forms[$form];
+        $form_id = $this->forms[$form]['identifier'];
         $regionObj = $this->minkContext->getRegion($region);
         $selectElement = $regionObj->findAll('css', $form_id);
         if (empty($selectElement)) {
@@ -69,7 +69,7 @@ class FormContext extends RawDrupalContext implements SnippetAcceptingContext {
      */
     public function iShouldNotSeeTheFormInTheRegion($form, $region)
     {
-        $form_id = $this->forms[$form];
+        $form_id = $this->forms[$form]['identifier'];
         $regionObj = $this->minkContext->getRegion($region);
         $selectElement = $regionObj->findAll('css', $form_id);
         if (!empty($selectElement)) {
