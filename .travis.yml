@@ -27,12 +27,28 @@ before_install:
   - EXIT_VALUE=0
   - sudo apt-get update > /dev/null
   - composer self-update
+  # Install Phantomjs prerequisites
+  - sudo apt-get install -y build-essential chrpath libssl-dev libxft-dev
+  - sudo apt-get install -y libfreetype6 libfreetype6-dev wget
+  - sudo apt-get install -y libfontconfig1 libfontconfig1-dev
   # mail requirements
-  - sudo apt-get update -qq
 
 install:
   # install php packages required for running a web server from drush on php 5.6
-  - sudo apt-get install -y --force-yes php5-curl php5-mysql php5-mbstring
+  - sudo apt-get install -y --force-yes php5-curl php5-mysql
+  # install drush
+  - php -r "readfile('http://files.drush.org/drush.phar');" > drush
+  - php drush core-status
+  - chmod +x drush
+  - sudo mv drush /usr/local/bin
+  # install Phantomjs
+  - cd ~
+  - export PHANTOM_JS="phantomjs-1.9.8-linux-x86_64"
+  - wget https://bitbucket.org/ariya/phantomjs/downloads/$PHANTOM_JS.tar.bz2
+  - sudo tar xvjf $PHANTOM_JS.tar.bz2
+  - sudo mv $PHANTOM_JS /usr/local/share
+  - sudo ln -sf /usr/local/share/$PHANTOM_JS/bin/phantomjs /usr/local/bin
+  - nohup /usr/local/share/phantomjs --webdriver=8643 > /dev/null 2>&1 &
 
 notifications:
   email: false
