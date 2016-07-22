@@ -67,7 +67,7 @@ before_script:
   # create new site, stubbing sendmail path with true to prevent delivery errors and manually resolving drush path
   - mysql -e 'create database drupal'
   - mysql -u root drupal < db/database.sql
-  - suod cp install/files/settings.php www/sites/default/settings.php
+  - sudo cp install/files/settings.php www/sites/default/settings.php
   - sudo cp install/files/settings.travis.php www/sites/default/settings.travis.php
   - sudo cp install/files/mydrupalsite.conf /etc/apache2/sites-available/mydrupalsite.conf
   - sudo a2ensite mydrupalsite.conf
