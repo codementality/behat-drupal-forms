@@ -71,19 +71,22 @@ before_script:
   - sudo cp install/files/settings.php www/sites/default/settings.php
   - sudo cp install/files/settings.travis.php www/sites/default/settings.travis.php
   - sudo cp install/files/mydrupalsite.conf /etc/apache2/sites-available/mydrupalsite.conf
+  - sudo chown www-data:www-data /var/www
   - sudo a2ensite mydrupalsite.conf
   # - sudo sed -i 's~/var/www/sites/drupal~/home/travis/build/codementality/behat-drupal-forms~g' /etc/apache2/sites-available/mydrupalsite.conf
   #- sudo sed -i '127.0.0.1 mydrupalsite.dev' /etc/hosts
   #- echo "127.0.0.1 mydrupalsite.dev" | sudo tee -a /etc/hosts
   #- sudo service apache2 restart
   - cd /var/www/sites/drupal/www
-  - composer install
+  - sudo composer install
   - drush en mydrupalsite -y
-  - drush updb -y
-  - drush entup -y #drupal8
-  - drush cr -y #drupal 8
+  - sudo drush updb -y
+  - sudo drush entup -y #drupal8
+  - sudo drush cr -y #drupal 8
+  - sudo chown www-data:www-data /var/www
   - cd /var/www/sites/drupal/tests
-  - composer install
+  - sudo composer install
+  - sudo chown www-data:www-data /var/www
   #- php -d sendmail_path=`which true` ~/.composer/vendor/bin/drush.php --yes core-quick-drupal --profile=testing --no-server --db-url=mysql://root:@127.0.0.1/drupal --enable=
   #- sed -i 's~/var/www/sites/drupal~/home/travis/build/codementality/behat-drupal-forms~g' behat.yml
 script:
