@@ -52,10 +52,10 @@ default:
         - PageContext:
             parameters:
               pages:
-                'Contact': '/contact'
-                'Node Search': '/search/node'
-                'User Search': '/search/user'
-                'Front': '/'
+                Contact: '/contact'
+                Node Search: '/search/node'
+                User Search: '/search/user'
+                Front: '/'
         - Drupal\DrupalExtension\Context\DrupalContext
         - Drupal\DrupalExtension\Context\MinkContext
         - Drupal\DrupalExtension\Context\MessageContext

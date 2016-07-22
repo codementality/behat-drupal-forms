@@ -52,7 +52,7 @@ install:
 
 before_script:
   - sudo mkdir -p /var/www/sites
-  - sudo chown travis:travis /var/www
+  - sudo chown www-data:www-data /var/www
   - sudo mv /home/travis/build/codementality/behat-drupal-forms /var/www/sites/drupal
   - sudo service apache2 restart
   #- sudo ln -s /home/travis/build/codementality/behat-drupal-forms /var/www/sites/drupal
