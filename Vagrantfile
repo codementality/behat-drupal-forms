@@ -107,12 +107,15 @@ Vagrant.configure(2) do |config|
      cd /var/www/sites/drupal
      #cp install/files/settings.php www/sites/default/settings.php
      cd /var/www/sites/drupal/www
+     composer install
      drush en mydrupalsite -y
      drush updb -y
      drush entup -y #drupal8
      # drush fra -y #with features installed
      # drush cc all #drupal 7
      drush cr -y #drupal 8
+     cd /var/www/sites/drupal/tests
+     composer install
   SHELL
 end
 

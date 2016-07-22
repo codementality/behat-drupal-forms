@@ -78,6 +78,7 @@ before_script:
   #- sudo service apache2 restart
   - cd /var/www/sites/drupal/www
   - composer install
+  - drush en mydrupalsite -y
   - drush updb -y
   - drush entup -y #drupal8
   - drush cr -y #drupal 8
