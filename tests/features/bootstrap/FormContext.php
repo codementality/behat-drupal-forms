@@ -60,7 +60,9 @@ class FormContext extends RawDrupalContext implements SnippetAcceptingContext {
 
         $regionObj = $this->minkContext->getSession()
           ->getPage()->find('region', $region);
-
+        if (empty($regionObj)) {
+            throw new \Exception(sprintf("Region '%s' was not found", $region));
+        }
         $selectForms = $regionObj->findAll('css', 'form');
 
         if (empty($selectForms)) {
@@ -90,6 +92,10 @@ class FormContext extends RawDrupalContext implements SnippetAcceptingContext {
 
         $regionObj = $this->minkContext->getSession()
           ->getPage()->find('region', $region);
+
+        if (empty($regionObj)) {
+            throw new \Exception(sprintf("Region '%s' was not found", $region));
+        }
 
         $selectForms = $regionObj->findAll('css', 'form');
 
